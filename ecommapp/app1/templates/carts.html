@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+        <div class="col-8 mb-5">
+            <div class="card h-100">
+                <!-- Product image-->
+                <img class="card-img-top" src="{{product.image.url}}" alt="..." />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder">{{product.product_name}}</h5>
+                        <!-- Product price-->
+                        {{product.price}}
+                    </div>
+                    <div> {{product.description}}</div>
+                </div>
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                            href="{% url 'cart_view' product.id %}">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mb-5">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{forms}}
+                <input type="submit">
+            </form>
+        </div>
+
+    </div>
+
+
+
+    {% endblock %}
+</body>
+
+</html>

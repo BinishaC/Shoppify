@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-16">
+                <div class="card h-100">
+
+                    <div class="card-body p-4">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {{form}}
+                            <input type="submit">
+                        </form>
+                        <a href="{% url 'reg_view' %}">Have't account Register now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if messages %}
+    {% for messages in messages %}
+    {% if messages.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{messages}}</strong>
+        <button type="buton" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+    </div>
+    {% endif %}
+    {% if messages.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{messages}}</strong>
+        <button type="buton" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</section>
+
+
+{% endblock %}

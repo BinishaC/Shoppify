@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="col mb-5">
+                    <div class="card h-100">
+
+                        <div class="card-body p-4">
+                            <!-- <div class="text-center"> -->
+
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    {{forms}}
+                                    <input type="submit">
+                                </form>
+
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if messages %}
+        {% for messages in messages %}
+        {% if messages.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{messages}}</strong>
+            <button type="buton" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if messages.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{messages}}</strong>
+            <button type="buton" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </section>
+
+
+    {% endblock %}
+</body>
+
+</html>
